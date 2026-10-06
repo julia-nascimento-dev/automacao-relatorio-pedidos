@@ -1,18 +1,18 @@
 # 📊 Sales Intelligence & Data Pipeline Automation
 
-Solução **end-to-end de automação de dados** desenvolvida por **Julia do Nascimento Pereira**, com foco no tratamento de dados de vendas, geração de indicadores de desempenho (KPIs), visualização interativa e criação de relatórios executivos.
+Projeto desenvolvido por **Julia do Nascimento Pereira** em Python para automatizar o fluxo de tratamento de dados de pedidos, cálculo de indicadores e geração de relatórios e visualizações de vendas.
 
-O projeto simula um fluxo real de **ETL (Extract, Transform, Load)**, partindo de uma base de dados bruta com inconsistências até a geração de informações estruturadas para análise e tomada de decisão.
+O projeto simula um fluxo de **ETL (Extract, Transform, Load)**, partindo de uma base bruta com inconsistências até a geração de uma base tratada, indicadores e arquivos de análise.
 
 ---
 
 ## 🎯 Visão Geral
 
-O projeto automatiza o fluxo de tratamento e análise de uma base de pedidos de vendas.
+O pipeline realiza as seguintes etapas:
 
-**Base bruta → Tratamento → Padronização → Análise → Dashboard → Relatório Executivo**
+**Base bruta → Limpeza e transformação → Cálculo de indicadores → Relatório → Gráficos**
 
-A proposta é reproduzir um cenário próximo ao encontrado em aplicações reais de **automação de dados, análise comercial e geração de informações para apoio à tomada de decisão**.
+A proposta é reproduzir um cenário prático de tratamento e análise de dados comerciais utilizando Python e bibliotecas voltadas para manipulação e visualização de dados.
 
 ---
 
@@ -20,24 +20,34 @@ A proposta é reproduzir um cenário próximo ao encontrado em aplicações reai
 
 ### 🧪 Geração de Dados Sintéticos
 
-Criação de uma base de dados simulada com inconsistências de formatação para reproduzir cenários semelhantes aos encontrados em bases reais.
+O projeto cria uma base fictícia com problemas propositalmente inseridos, como:
+
+- Espaços extras em nomes;
+- Diferenças de capitalização;
+- Regiões com formatos diferentes;
+- Valores monetários em formatos textuais;
+- Datas em formatos distintos;
+- Valores ausentes;
+- Registros duplicados.
 
 Arquivo responsável:
 
 `src/gerar_base.py`
 
+---
+
 ### 🧹 Limpeza e Tratamento de Dados
 
-Utilizando **Pandas**:
+O tratamento é realizado com **Pandas** e inclui:
 
 - Remoção de registros duplicados;
-- Higienização de strings;
-- Padronização de nomes de clientes;
-- Padronização de regiões;
-- Conversão de valores monetários como `R$ 3.500,00` para valores numéricos (`float`);
-- Tratamento de valores ausentes (`null`, `None` e `NaN`);
-- Preenchimento de datas ausentes com `Não informada`;
-- Padronização das datas para `DD/MM/AAAA`.
+- Higienização dos nomes dos clientes;
+- Padronização de nomes para *Title Case*;
+- Conversão de valores monetários para `float`;
+- Tratamento de valores ausentes na coluna de região;
+- Padronização das regiões;
+- Conversão e padronização das datas para `DD/MM/AAAA`;
+- Criação da coluna de **Faturamento Total**, calculada a partir de quantidade × preço unitário.
 
 Arquivo responsável:
 
@@ -47,35 +57,50 @@ Resultado:
 
 `output/base_pedidos_tratada.xlsx`
 
-### 📈 Dashboard Web Interativo
+---
 
-O projeto gera um dashboard HTML para visualização dos principais indicadores, utilizando:
+### 📊 Relatório de Vendas
 
-- Gráficos dinâmicos com Plotly;
-- Busca textual por cliente;
-- Filtros por região;
-- Interação em tempo real;
-- HTML5, CSS3 e JavaScript Vanilla.
+O projeto calcula indicadores gerais e realiza análises por região e por cliente.
+
+São calculados:
+
+- Faturamento total;
+- Total de pedidos;
+- Ticket médio;
+- Faturamento por região;
+- Top 5 clientes por faturamento.
 
 Arquivo responsável:
 
-`src/gerar_dashboard_interativo.py`
+`src/gerar_relatorio.py`
 
 Resultado:
 
-`output/dashboard_interativo.html`
+`output/relatorio_executivo.xlsx`
 
-### 📄 Relatório Executivo
+O relatório é exportado em formato **Excel**, com abas para análise por região e Top Clientes.
 
-Geração de relatório consolidado com:
+---
 
-- Faturamento total;
-- Ticket médio;
-- Volume de clientes.
+### 📈 Visualização de Dados
 
-Resultado:
+O projeto gera gráficos automaticamente utilizando **Matplotlib** e **Seaborn**.
 
-`output/relatorio_executivo.pdf`
+Visualizações disponíveis:
+
+- Faturamento total por região em gráfico de barras;
+- Top 5 clientes por faturamento em gráfico de donut.
+
+Arquivo responsável:
+
+`src/gerar_graficos.py`
+
+Arquivos gerados:
+
+`output/grafico_faturamento_regiao.png`
+
+`output/grafico_top_clientes.png`
 
 ---
 
@@ -83,15 +108,11 @@ Resultado:
 
 | Tecnologia | Utilização |
 |---|---|
-| **Python 3.10+** | Desenvolvimento do pipeline |
+| **Python 3.12+** | Desenvolvimento do pipeline |
 | **Pandas** | Tratamento e transformação dos dados |
-| **OpenPyXL** | Manipulação de arquivos Excel |
-| **Plotly** | Gráficos e visualizações interativas |
-| **Matplotlib** | Visualização de dados |
-| **Seaborn** | Visualização e análise exploratória |
-| **HTML5** | Estrutura do dashboard |
-| **CSS3** | Estilização e layout |
-| **JavaScript Vanilla** | Interações e filtros |
+| **OpenPyXL** | Leitura e escrita de arquivos Excel |
+| **Matplotlib** | Geração de gráficos |
+| **Seaborn** | Visualização de dados |
 | **Git** | Controle de versão |
 | **GitHub** | Hospedagem e versionamento |
 
@@ -101,24 +122,33 @@ Resultado:
 
 ```text
 automacao-relatorio-pedidos/
-├── .venv/
+│
 ├── data/
 │   └── base_pedidos_bruta.xlsx
-├── output/
-│   ├── base_pedidos_tratada.xlsx
-│   ├── dashboard_interativo.html
-│   └── relatorio_executivo.pdf
+│       └── Base de dados bruta
+│
 ├── src/
 │   ├── gerar_base.py
+│   │   └── Geração da base simulada
+│   │
 │   ├── tratar_dados.py
-│   ├── gerar_dashboard_interativo.py
-│   └── template_coupler.html
-├── .gitignore
-├── README.md
-└── requirements.txt
+│   │   └── Limpeza e transformação dos dados
+│   │
+│   ├── gerar_relatorio.py
+│   │   └── Cálculo dos indicadores e relatório em Excel
+│   │
+│   └── gerar_graficos.py
+│       └── Geração das visualizações
+│
+├── output/
+│   ├── base_pedidos_tratada.xlsx
+│   ├── relatorio_executivo.xlsx
+│   ├── grafico_faturamento_regiao.png
+│   └── grafico_top_clientes.png
+│
+├── requirements.txt
+└── README.md
 ```
-
-> A pasta `.venv/` representa o ambiente virtual local do Python e não deve ser versionada no Git.
 
 ---
 
@@ -139,13 +169,13 @@ python -m venv .venv
 
 ### 3. Ativar o ambiente virtual
 
-Windows PowerShell:
+No Windows PowerShell:
 
 ```powershell
-.\\.venv\\Scripts\\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 ```
 
-Linux/macOS:
+No Linux ou macOS:
 
 ```bash
 source .venv/bin/activate
@@ -159,11 +189,13 @@ pip install -r requirements.txt
 
 ### 5. Gerar a base bruta
 
-Opcional caso a base já exista:
-
 ```powershell
 python src/gerar_base.py
 ```
+
+Esse comando cria:
+
+`data/base_pedidos_bruta.xlsx`
 
 ### 6. Executar o tratamento dos dados
 
@@ -171,25 +203,33 @@ python src/gerar_base.py
 python src/tratar_dados.py
 ```
 
-Gera:
+Esse processo gera:
 
 `output/base_pedidos_tratada.xlsx`
 
-### 7. Gerar o dashboard e o relatório executivo
+### 7. Gerar o relatório
 
 ```powershell
-python src/gerar_dashboard_interativo.py
+python src/gerar_relatorio.py
 ```
 
-Gera:
+Esse processo calcula os indicadores e gera:
 
-``output/dashboard_interativo.html``
+`output/relatorio_executivo.xlsx`
+
+### 8. Gerar os gráficos
+
+```powershell
+python src/gerar_graficos.py
+```
+
+Esse processo gera:
+
+`output/grafico_faturamento_regiao.png`
+
 e
-``output/relatorio_executivo.pdf``
 
-### 8. Visualizar os resultados
-
-Abra `output/dashboard_interativo.html` em um navegador como Chrome, Edge ou Firefox. O relatório pode ser acessado em `output/relatorio_executivo.pdf`.
+`output/grafico_top_clientes.png`
 
 ---
 
@@ -202,10 +242,16 @@ src/tratar_dados.py
         ↓
 output/base_pedidos_tratada.xlsx
         ↓
-src/gerar_dashboard_interativo.py
+src/gerar_relatorio.py
         ↓
-output/dashboard_interativo.html
-output/relatorio_executivo.pdf
+output/relatorio_executivo.xlsx
+
+output/base_pedidos_tratada.xlsx
+        ↓
+src/gerar_graficos.py
+        ↓
+output/grafico_faturamento_regiao.png
+output/grafico_top_clientes.png
 ```
 
 ---
@@ -213,13 +259,24 @@ output/relatorio_executivo.pdf
 ## 📊 Indicadores
 
 ### Faturamento Total
-Valor total de faturamento obtido a partir dos pedidos processados.
+
+Soma do faturamento calculado para os pedidos presentes na base tratada.
+
+### Total de Pedidos
+
+Quantidade de registros existentes após o processo de tratamento.
 
 ### Ticket Médio
-Indicador utilizado para acompanhar o valor médio das vendas.
 
-### Volume de Clientes
-Quantidade de clientes presente na base analisada.
+Valor médio do faturamento por pedido.
+
+### Faturamento por Região
+
+Consolidação do faturamento e quantidade de pedidos por região.
+
+### Top 5 Clientes
+
+Ranking dos cinco clientes com maior faturamento na base analisada.
 
 ---
 
@@ -228,15 +285,13 @@ Quantidade de clientes presente na base analisada.
 - Python;
 - Pandas;
 - ETL;
-- Tratamento e limpeza de dados;
+- Limpeza e tratamento de dados;
 - Manipulação de arquivos Excel;
+- Cálculo de indicadores;
 - Análise de dados;
-- Geração de indicadores;
 - Visualização de dados;
-- Criação de dashboards;
-- HTML5;
-- CSS3;
-- JavaScript;
+- Matplotlib;
+- Seaborn;
 - Git;
 - GitHub;
 - Automação de processos.
