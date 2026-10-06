@@ -1,14 +1,14 @@
-# 📊 Sales Intelligence & Data Pipeline Automation
+# Automação e Análise de Relatórios de Pedidos
 
 Projeto desenvolvido por **Julia do Nascimento Pereira** em Python para automatizar o fluxo de tratamento de dados de pedidos, cálculo de indicadores e geração de relatórios e visualizações de vendas.
 
-O projeto simula um fluxo de **ETL (Extract, Transform, Load)**, partindo de uma base bruta com inconsistências até a geração de uma base tratada, indicadores e arquivos de análise.
+O projeto simula um fluxo de **ETL (Extração, Transformação e Carga)**, partindo de uma base bruta com inconsistências até a geração de uma base tratada, indicadores e arquivos de análise.
 
 ---
 
-## 🎯 Visão Geral
+## Visão Geral
 
-O pipeline realiza as seguintes etapas:
+O processo realiza as seguintes etapas:
 
 **Base bruta → Limpeza e transformação → Cálculo de indicadores → Relatório → Gráficos**
 
@@ -16,9 +16,9 @@ A proposta é reproduzir um cenário prático de tratamento e análise de dados 
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-### 🧪 Geração de Dados Sintéticos
+### Geração de Dados Sintéticos
 
 O projeto cria uma base fictícia com problemas propositalmente inseridos, como:
 
@@ -36,7 +36,7 @@ Arquivo responsável:
 
 ---
 
-### 🧹 Limpeza e Tratamento de Dados
+### Limpeza e Tratamento de Dados
 
 O tratamento é realizado com **Pandas** e inclui:
 
@@ -59,7 +59,7 @@ Resultado:
 
 ---
 
-### 📊 Relatório de Vendas
+### Relatório de Vendas
 
 O projeto calcula indicadores gerais e realiza análises por região e por cliente.
 
@@ -69,7 +69,7 @@ São calculados:
 - Total de pedidos;
 - Ticket médio;
 - Faturamento por região;
-- Top 5 clientes por faturamento.
+- Cinco principais clientes por faturamento.
 
 Arquivo responsável:
 
@@ -79,18 +79,18 @@ Resultado:
 
 `output/relatorio_executivo.xlsx`
 
-O relatório é exportado em formato **Excel**, com abas para análise por região e Top Clientes.
+O relatório é exportado em formato **Excel**, com abas para análise por região e principais clientes.
 
 ---
 
-### 📈 Visualização de Dados
+### Visualização de Dados
 
 O projeto gera gráficos automaticamente utilizando **Matplotlib** e **Seaborn**.
 
 Visualizações disponíveis:
 
 - Faturamento total por região em gráfico de barras;
-- Top 5 clientes por faturamento em gráfico de donut.
+- Cinco principais clientes por faturamento em gráfico de donut.
 
 Arquivo responsável:
 
@@ -104,11 +104,11 @@ Arquivos gerados:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Tecnologia | Utilização |
 |---|---|
-| **Python 3.12+** | Desenvolvimento do pipeline |
+| **Python 3.12+** | Desenvolvimento do processo |
 | **Pandas** | Tratamento e transformação dos dados |
 | **OpenPyXL** | Leitura e escrita de arquivos Excel |
 | **Matplotlib** | Geração de gráficos |
@@ -118,7 +118,7 @@ Arquivos gerados:
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```text
 automacao-relatorio-pedidos/
@@ -152,7 +152,7 @@ automacao-relatorio-pedidos/
 
 ---
 
-## 💻 Como Executar
+## Como Executar
 
 ### 1. Clonar o repositório
 
@@ -233,7 +233,7 @@ e
 
 ---
 
-## 🔁 Pipeline de Dados
+## Processo de Dados
 
 ```text
 data/base_pedidos_bruta.xlsx
@@ -256,7 +256,7 @@ output/grafico_top_clientes.png
 
 ---
 
-## 📊 Indicadores
+## Indicadores
 
 ### Faturamento Total
 
@@ -274,13 +274,13 @@ Valor médio do faturamento por pedido.
 
 Consolidação do faturamento e quantidade de pedidos por região.
 
-### Top 5 Clientes
+### Cinco Principais Clientes
 
 Ranking dos cinco clientes com maior faturamento na base analisada.
 
 ---
 
-## 🧠 Competências Aplicadas
+## Competências Aplicadas
 
 - Python;
 - Pandas;
@@ -298,7 +298,7 @@ Ranking dos cinco clientes com maior faturamento na base analisada.
 
 ---
 
-## 👩🏻‍💻 Autoria
+## Autoria
 
 Desenvolvido por **Julia do Nascimento Pereira**.
 
@@ -306,6 +306,6 @@ Projeto desenvolvido como parte do meu portfólio de **Engenharia de Software**,
 
 ---
 
-## 📌 Status
+## Status
 
 **Em desenvolvimento / evolução contínua.**
