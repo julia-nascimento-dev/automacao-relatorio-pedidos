@@ -1,0 +1,6 @@
+# Ignorar ambiente virtual Python
+.venv/
+
+# Ignorar pastas de dados e resultados locais
+data/
+output/
